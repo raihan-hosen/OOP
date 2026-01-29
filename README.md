@@ -1,37 +1,66 @@
 # OOP with C++ 🚀
 
-This repository contains my **Object-Oriented Programming (OOP)** practice and exercise codes written in **C++**. It is created as part of my learning journey to understand core OOP concepts and apply them through hands-on coding.
+This repository contains my **C++ learning journey**, starting from **basic programming concepts (arrays & structures)** and gradually moving into **Object-Oriented Programming (OOP)**. It is built through hands-on practice, university exercises, and self-study.
+
+---
 
 ## 📌 Purpose
 
 The main goals of this repository are:
 
-* To practice **Object-Oriented Programming concepts** using C++
-* To store and organize my university/class exercises
+* To build a **strong foundation in C++** step by step
+* To learn **arrays and structures before OOP** (core prerequisites)
+* To practice and apply **Object-Oriented Programming concepts**
+* To organize my **university/class exercises** in one place
 * To track my learning progress over time
-* To build a strong foundation for advanced C++ and software development
 
-## 🧠 Topics Covered
+---
 
-This repository includes exercises related to:
+## 🧠 Learning Path
 
-* Classes and Objects
-* Constructors and Destructors
-* Encapsulation
-* Inheritance
-* Polymorphism
-* Abstraction
-* Access Specifiers
-* Static Members
-* Friend Functions & Classes
-* Operator Overloading
-* File Handling (basic)
+This repository follows a **progressive learning order**:
+
+1. **Basic C++ Concepts**
+
+   * Variables & data types
+   * Input / Output
+   * Control statements
+
+2. **Arrays**
+
+   * 1D & 2D arrays
+   * Array operations
+   * Passing arrays to functions
+
+3. **Structures**
+
+   * Structure basics
+   * Array of structures
+   * Structures vs classes
+
+4. **Object-Oriented Programming (OOP)**
+
+   * Classes and Objects
+   * Constructors and Destructors
+   * Encapsulation
+   * Inheritance
+   * Polymorphism
+   * Abstraction
+   * Access Specifiers
+   * Static Members
+   * Friend Functions & Classes
+   * Operator Overloading
+   * Basic File Handling
+
+---
 
 ## 📂 Repository Structure
 
 ```
 OOP/
 │── basics/
+│── arrays/
+│── structures/
 │── class_object/
 │── constructor_destructor/
 │── inheritance/
@@ -43,11 +72,15 @@ OOP/
 
 *(Folders may be updated as I progress.)*
 
+---
+
 ## 🛠️ Tools & Language
 
 * **Language:** C++
 * **Compiler:** GCC / G++
 * **IDE/Editor:** VS Code / CodeBlocks (or any C++ supported editor)
+
+---
 
 ## ▶️ How to Run
 
@@ -57,7 +90,7 @@ OOP/
 git clone https://github.com/raihan-hosen/OOP.git
 ```
 
-2. Navigate to the folder:
+2. Navigate to the project folder:
 
 ```bash
 cd OOP
@@ -70,13 +103,19 @@ g++ filename.cpp -o output
 ./output
 ```
 
+---
+
 ## 📈 Learning Status
 
-🔄 Ongoing — new exercises will be added regularly.
+🔄 **Ongoing** — new topics and exercises will be added regularly as I progress from basics to advanced OOP concepts.
+
+---
 
 ## 🤝 Contributions
 
-This is a personal learning repository. Suggestions and improvements are always welcome.
+This is a **personal learning repository**. Suggestions, corrections, and improvements are always welcome.
+
+---
 
 ## 📜 License
 
