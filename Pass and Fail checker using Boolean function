@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+bool checkPassFail(int score)
+{
+    return score >= 40;
+}
+int main()
+{
+    int score;
+    cout << "Enter the score: ";
+    cin >> score;
+
+    if (checkPassFail(score))
+    {
+        cout << "Pass" << endl;
+    }
+    else
+    {
+        cout << "Fail" << endl;
+    }
+    return 0;
+}
