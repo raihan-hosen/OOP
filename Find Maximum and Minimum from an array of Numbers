@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int N;
+    cout << "Enter the number of integers: ";
+    cin >> N;
+
+    int number[N];
+    for (int i = 0; i < N; i++) {
+        cout << "Give Integer Number" << " " << i + 1 << ": ";
+        cin >> number[i];
+    }
+    int max = number[0], min = number[0];
+    for (int i = 0; i < N; i++)
+    {
+        if (number[i] > max)
+            max = number[i];
+        if (number[i] < min)
+            min = number[i];
+    }
+    cout << "Maximum Number: " << max << endl;
+    cout << "Minimum Number: " << min << endl;
+
+    return 0;
+}
