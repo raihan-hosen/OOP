@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+double average(int number[], int size)
+{
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += number[i];
+    }
+    return static_cast<double>(sum) / size;
+}
+int main()
+{
+    int N, numbers[N];
+    cout << "Enter The value of N" << endl;
+    cin >> N;
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Enter number " << i + 1 << ": ";
+        cin >> numbers[i];
+    }
+    cout << "Average: " << average(numbers, N) << endl;
+    return 0;
+}
