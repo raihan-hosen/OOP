@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int N;
+    cout << "Enter the number of integers: ";
+    cin >> N;
+
+    int number[N];
+    for (int i = 0; i < N; i++)
+    {
+        cout << "Give Integer Number" << " " << i + 1 << ": ";
+        cin >> number[i];
+    }
+    int even = 0, odd = 0;
+    for (int i = 0; i < N; i++)
+    {
+        if (number[i] % 2 == 0){
+            even++;
+        }
+        else {
+            odd++;
+        }
+    }
+    cout << "Total Even Numbers: " << even << endl;
+    cout << "Total Odd Numbers: " << odd << endl;
+    return 0;
+}
