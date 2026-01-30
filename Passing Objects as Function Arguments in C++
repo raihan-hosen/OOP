@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class Complex
+{
+    int a, b;
+
+public:
+    void complex(int x, int y)
+    {
+        a = x;
+        b = y;
+    }
+    void setdata(Complex o1, Complex o2)
+    {
+        a = o1.a + o2.a;
+        b = o1.b + o2.b;
+    }
+    void printnumber()
+    {
+        cout << "Your number is " << a << " + " << b << "i" << endl;
+    }
+};
+
+int main()
+{
+    Complex c1, c2, c3;
+    c1.complex(3, 4);
+    c1.printnumber();
+    c2.complex(5, 6);
+    c2.printnumber();
+    c3.setdata(c1, c2);
+    c3.printnumber();
+
+    return 0;
+}
