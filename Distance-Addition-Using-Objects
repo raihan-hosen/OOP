@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+class Distance
+{
+    int meter, cm;
+
+public:
+    void putdata(int m, int c)
+    {
+        meter = m;
+        cm = c;
+    }
+    void fulldistance(Distance d1, Distance d2)
+    {
+        meter = d1.meter + d2.meter;
+        cm = d1.cm + d2.cm;
+        if (cm >= 100)
+        {
+            meter += cm / 100;
+            cm = cm % 100;
+        }
+    }
+    void getdata()
+    {
+        cout << "Distance: " << meter << " meters and " << cm << " centimeters" << endl;
+    }
+};
+
+int main()
+{
+
+    Distance d1, d2, d3;
+    d1.putdata(2, 85); // 2 meters 85 centimeters
+    d2.putdata(3, 75); // 3 meters 75 centimeters
+    d3.fulldistance(d1, d2);
+    d3.getdata(); // Should output 6 meters and 60 centimeters
+
+    return 0;
+}
