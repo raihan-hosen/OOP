@@ -31,10 +31,10 @@ int main()
 {
 
     Distance d1, d2, d3;
-    d1.putdata(2, 85); // 2 meters 85 centimeters
-    d2.putdata(3, 75); // 3 meters 75 centimeters
+    d1.putdata(2, 85); 
+    d2.putdata(3, 75); 
     d3.fulldistance(d1, d2);
-    d3.getdata(); // Should output 6 meters and 60 centimeters
+    d3.getdata();
 
     return 0;
 }
