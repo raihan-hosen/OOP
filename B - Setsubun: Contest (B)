@@ -1,0 +1,19 @@
+using namespace std;
+
+int main()
+{
+    int N, K;
+    cin >> N >> K;
+
+    long long totalBeans = 0; // total beans eaten
+    int years = 0;            // years passed
+
+    while (totalBeans < K)
+    {
+        totalBeans += N + years; // beans eaten this year
+        years++;
+    }
+
+    cout << years - 1 << endl; // subtract 1 because we count starting at year 0
+    return 0;
+}
