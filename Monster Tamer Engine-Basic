@@ -1,0 +1,71 @@
+#include <iostream>
+using namespace std;
+
+class Monser
+{
+    string Name;
+    int health = 100;
+    int energy = 90;
+    int AttackPower;
+
+public:
+    Monser(string name, int attackPower)
+    {
+        Name = name;
+        AttackPower = attackPower;
+    }
+
+    void roar()
+    {
+        cout << Name << " roars with power " << AttackPower << "!" << endl;
+    }
+
+    void displayStatus()
+    {
+        cout << "Name: " << Name << endl;
+        cout << "Health: " << health << endl;
+        cout << "Energy: " << energy << endl;
+        cout << "Attack Power: " << AttackPower << endl;
+    }
+
+    void rest()
+    {
+
+        if (energy >= 85)
+        {
+            energy = 100;
+            cout << Name << " is fully rested. Current energy: " << energy << endl;
+        }
+        else if (energy < 85)
+        {
+            energy += 15;
+            cout << Name << " rests and regains energy. Current energy: " << energy << endl;
+        }
+    }
+
+    void attack()
+    {
+        if (energy >= 10)
+        {
+            cout << Name << " attacks with power " << AttackPower << "!" << endl;
+            energy -= 10;
+        }
+        else
+        {
+            cout << Name << " is too tired to attack." << endl;
+        }
+    }
+};
+
+int main()
+{
+
+    Monser dragon("Dragon", 50);
+    dragon.displayStatus();
+    dragon.attack();
+    dragon.displayStatus();
+    dragon.rest();
+    dragon.displayStatus();
+
+    return 0;
+}
