@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int size;
+    cout << "Enter the size of array: ";
+    cin >> size;
+
+    int arr[100];
+
+    for (int i = 0; i < size; i++)
+    {
+        cin >> arr[i];
+    }
+
+    int largest = arr[0];
+    int secondLargest = 0;
+
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] > largest)
+        {
+            secondLargest = largest;
+            largest = arr[i];
+        }
+        else if (arr[i] > secondLargest && arr[i] < largest)
+        {
+            secondLargest = arr[i];
+        }
+    }
+
+    cout << "Largest number: " << largest << endl;
+    cout << "Second largest number: " << secondLargest << endl;
+
+    return 0;
+} 
