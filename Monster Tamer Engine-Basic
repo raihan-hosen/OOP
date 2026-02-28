@@ -1,71 +1,145 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
-class Monser
+class Monster
 {
+private:
     string Name;
     int health = 100;
     int energy = 90;
     int AttackPower;
+    bool defending = false;
 
 public:
-    Monser(string name, int attackPower)
+    Monster(string name, int attackPower)
     {
         Name = name;
-        AttackPower = attackPower;
+        AttackPower = max(1, attackPower);
+    }
+
+    bool isAlive()
+    {
+        return health > 0;
     }
 
     void roar()
     {
-        cout << Name << " roars with power " << AttackPower << "!" << endl;
+        if (isAlive())
+            cout << Name << " roars fiercely!\n";
     }
 
-    void displayStatus()
+    void attack(Monster& target)
     {
-        cout << "Name: " << Name << endl;
-        cout << "Health: " << health << endl;
-        cout << "Energy: " << energy << endl;
-        cout << "Attack Power: " << AttackPower << endl;
+        if (!isAlive()) return;
+
+        if (energy >= 10)
+        {
+            int damage = AttackPower + rand() % 11; // random bonus 0-10
+
+            if (target.defending)
+                damage /= 2;
+
+            cout << Name << " attacks " << target.Name
+                 << " for " << damage << " damage!\n";
+
+            target.health -= damage;
+            energy -= 10;
+
+            if (target.health < 0)
+                target.health = 0;
+
+            target.defending = false;
+        }
+        else
+            cout << Name << " is too tired to attack.\n";
+    }
+
+    void specialAttack(Monster& target)
+    {
+        if (!isAlive()) return;
+
+        if (energy >= 30)
+        {
+            int damage = AttackPower * 2;
+
+            if (target.defending)
+                damage /= 2;
+
+            cout << Name << " uses SPECIAL ATTACK on "
+                 << target.Name << " for "
+                 << damage << " damage!\n";
+
+            target.health -= damage;
+            energy -= 30;
+
+            if (target.health < 0)
+                target.health = 0;
+
+            target.defending = false;
+        }
+        else
+            cout << Name << " lacks energy for special attack.\n";
+    }
+
+    void defend()
+    {
+        if (!isAlive()) return;
+
+        defending = true;
+        cout << Name << " is defending.\n";
+    }
+
+    void heal()
+    {
+        if (!isAlive()) return;
+
+        if (energy >= 20)
+        {
+            health = min(100, health + 25);
+            energy -= 20;
+            cout << Name << " heals. Health: " << health << endl;
+        }
+        else
+            cout << Name << " not enough energy to heal.\n";
     }
 
     void rest()
     {
+        if (!isAlive()) return;
 
-        if (energy >= 85)
-        {
-            energy = 100;
-            cout << Name << " is fully rested. Current energy: " << energy << endl;
-        }
-        else if (energy < 85)
-        {
-            energy += 15;
-            cout << Name << " rests and regains energy. Current energy: " << energy << endl;
-        }
+        energy = min(100, energy + 20);
+        cout << Name << " rests. Energy: " << energy << endl;
     }
 
-    void attack()
+    void displayStatus()
     {
-        if (energy >= 10)
-        {
-            cout << Name << " attacks with power " << AttackPower << "!" << endl;
-            energy -= 10;
-        }
-        else
-        {
-            cout << Name << " is too tired to attack." << endl;
-        }
+        cout << "\nName: " << Name
+             << "\nHealth: " << health
+             << "\nEnergy: " << energy
+             << "\nAttack Power: " << AttackPower
+             << "\nDefending: " << (defending ? "Yes" : "No")
+             << "\n";
     }
 };
 
 int main()
 {
+    srand(time(0));
 
-    Monser dragon("Dragon", 50);
+    Monster dragon("Dragon", 40);
+    Monster tiger("Tiger", 30);
+
+    dragon.attack(tiger);
+    tiger.defend();
+    dragon.specialAttack(tiger);
+
+    tiger.heal();
+    tiger.attack(dragon);
+
     dragon.displayStatus();
-    dragon.attack();
-    dragon.displayStatus();
-    dragon.rest();
-    dragon.displayStatus();
+    tiger.displayStatus();
 
     return 0;
 }
