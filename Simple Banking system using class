@@ -1,52 +1,108 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-class bankaccount
+class BankAccount
 {
 private:
     string accountholder;
     double balance;
-    int accountid = 0;
+    int accountid;
+
+    static int nextId;
+    vector<string> history;
 
 public:
-    bankaccount(string Accountholder, double deposit)
+    BankAccount(const string& name, double deposit)
     {
-        this->accountholder = Accountholder;
-        this->balance = deposit;
-        accountid += 1;
+        accountholder = name;
+        balance = deposit;
+        accountid = ++nextId;
+
+        history.push_back("Account created with balance: " + to_string(deposit));
     }
 
     void deposit(double amount)
     {
-        balance += amount;
+        if (amount > 0)
+        {
+            balance += amount;
+            history.push_back("Deposited: " + to_string(amount));
+        }
+        else
+            cout << "Invalid deposit amount\n";
     }
+
     void withdraw(double amount)
     {
+        if (amount <= 0)
+        {
+            cout << "Invalid amount\n";
+            return;
+        }
+
         if (balance >= amount)
         {
             balance -= amount;
+            history.push_back("Withdrawn: " + to_string(amount));
         }
         else
-        {
-            cout << "Insufficient Balance" << endl;
-        }
+            cout << "Insufficient Balance\n";
     }
-    void displayinfo()
+
+    void transfer(BankAccount& other, double amount)
     {
-        cout << "Name of Account Holder: " << accountholder << endl;
-        cout << "Id: " << accountid << endl;
+        if (balance >= amount && amount > 0)
+        {
+            balance -= amount;
+            other.balance += amount;
+
+            history.push_back("Transferred " + to_string(amount) +
+                              " to " + other.accountholder);
+
+            other.history.push_back("Received " + to_string(amount) +
+                                    " from " + accountholder);
+        }
+        else
+            cout << "Transfer failed\n";
+    }
+
+    double getBalance() const
+    {
+        return balance;
+    }
+
+    void showHistory()
+    {
+        cout << "\nTransaction History (" << accountholder << "):\n";
+        for (string h : history)
+            cout << "- " << h << endl;
+    }
+
+    void displayInfo()
+    {
+        cout << "\nName: " << accountholder << endl;
+        cout << "ID: " << accountid << endl;
         cout << "Balance: " << balance << endl;
     }
 };
 
+int BankAccount::nextId = 0;
+
 int main()
 {
-    bankaccount raihan("Raihan Hosen", 5000);
-    raihan.displayinfo();
-    raihan.deposit(1000);
-    raihan.displayinfo();
-    raihan.withdraw(10000);
-    raihan.displayinfo();
+    BankAccount a("Raihan", 5000);
+    BankAccount b("Hasan", 3000);
+
+    a.deposit(1000);
+    a.withdraw(2000);
+    a.transfer(b, 1500);
+
+    a.displayInfo();
+    b.displayInfo();
+
+    a.showHistory();
+    b.showHistory();
 
     return 0;
 }
